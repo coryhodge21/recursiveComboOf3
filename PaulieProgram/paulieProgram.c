@@ -31,15 +31,6 @@
     const int LIST_ARRAY_STRING_LENGTH = 15;
     char listArr[LIST_ARRAY_LENGTH][LIST_ARRAY_STRING_LENGTH] = {0};
 
-
-// /// \brief Print State to File
-// void printStateToFile(FILE* filePtr, char list[][LIST_ARRAY_STRING_LENGTH], int slow, int med, int fast);
-// ///////////////////////////////////
-// //  DEBUG
-// //////////////////////////////////
-// // \brief Print State to Terminal
-// void printStateToTerminal(char * list[][LIST_ARRAY_STRING_LENGTH], int slow, int med, int fast);
-
 int main() 
 {
 
@@ -138,22 +129,16 @@ int main()
     }
 
     // SLOW: Start Combination Head
-    for( slowIndex = 0; ( slowIndex ) < ( LIST_ARRAY_LENGTH - 2 ) ; slowIndex++ ) {
+    for( slowIndex = 0; ( slowIndex ) < ( LIST_ARRAY_LENGTH ) ; slowIndex++ ) {
 
         // Group
         fprintf(outPtr_file_Ptr, "\n \n Group %s \n \n", listArr[slowIndex]);
 
         // MED : forward
-        for( medIndex = (slowIndex + 1) ; medIndex < ( LIST_ARRAY_LENGTH - 1 ) ; medIndex++ ){
+        for( medIndex = (slowIndex + 1) ; medIndex < ( LIST_ARRAY_LENGTH ) ; medIndex++ ){
             
             // FAST : display forward index
             for( fastIndex = (medIndex + 1) ; fastIndex < ( LIST_ARRAY_LENGTH ) ; fastIndex++ ) {
-
-                    // Print To File
-                    //printStateToFile(outPtr_file_Ptr, listArr[slowIndex][LIST_ARRAY_STRING_LENGTH], slowIndex, medIndex, fastIndex);
-
-                    // DEBUG: Print To Terminal
-                    //printStateToTerminal(listArr[slowIndex][LIST_ARRAY_STRING_LENGTH], slowIndex, medIndex, fastIndex);
             
                 // Slow paced incrementing team name
                 fprintf(outPtr_file_Ptr, "%s", listArr[slowIndex]);
@@ -212,8 +197,6 @@ int main()
                 // New Line for next team group
                 fprintf(outPtr_file_Ptr, "\n");
 
-
-
                 printf("%s", listArr[slowIndex]);
                 // hyphen
                 printf("- ");
@@ -233,26 +216,79 @@ int main()
         }// End Med Forward
 
         // MED: Recover
-        // for( medIndex = 0 ; medIndex < (slowIndex - 1 ) ; medIndex++) {
+        for( medIndex = 0 ; medIndex < (slowIndex) ; medIndex++) {
 
-        //     // recover past index's
-        //     for( fastIndex = (medIndex + 1) ; fastIndex < LIST_ARRAY_LENGTH ; fastIndex++) {
+            // recover past index's
+            for( fastIndex = (medIndex + 1) ; fastIndex < LIST_ARRAY_LENGTH ; fastIndex++) {
 
-        //         // skip slowindex already printed
-        //         if(fastIndex != slowIndex) {
-        //             // Print To File
-        //             //rintStateToFile(outPtr_file_Ptr, listArr, slowIndex, medIndex, fastIndex);
+                // skip slowindex already printed
+                if(fastIndex != slowIndex) {
+    
+                // Slow paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[slowIndex]);
+                // hyphen
+                fprintf(outPtr_file_Ptr, "- ");
+                // Med paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[medIndex]);
+                // hyphen
+                fprintf(outPtr_file_Ptr, "- ");
+                // fast paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[fastIndex]);
+                // New Line for next team group
+                fprintf(outPtr_file_Ptr, "\n");
 
-        //             // DEBUG: Print To Terminal
-        //             //printStateToTerminal(listArr, slowIndex, medIndex, fastIndex);
+                printf("%s", listArr[slowIndex]);
+                // hyphen
+                printf("- ");
+                // Med paced incrementing team name
+                printf("%s", listArr[medIndex]);
+                // hyphen
+                printf("- ");
+                // fast paced incrementing team name
+                printf("%s", listArr[fastIndex]);
+                // New Line for next team group
+                printf("\n");
 
-
-
-        //         }// End IF
+                }// End IF
             
-        //     }// End Fast Index
+            }// End Fast Index
 
-        // }// End Med Rocover
+            // FAST: recover past index's
+            for( fastIndex = 0 ; fastIndex < medIndex ; fastIndex++) {
+
+                // skip slowindex already printed
+                if(fastIndex != slowIndex) {
+    
+                // Slow paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[slowIndex]);
+                // hyphen
+                fprintf(outPtr_file_Ptr, "- ");
+                // Med paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[medIndex]);
+                // hyphen
+                fprintf(outPtr_file_Ptr, "- ");
+                // fast paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[fastIndex]);
+                // New Line for next team group
+                fprintf(outPtr_file_Ptr, "\n");
+
+                printf("%s", listArr[slowIndex]);
+                // hyphen
+                printf("- ");
+                // Med paced incrementing team name
+                printf("%s", listArr[medIndex]);
+                // hyphen
+                printf("- ");
+                // fast paced incrementing team name
+                printf("%s", listArr[fastIndex]);
+                // New Line for next team group
+                printf("\n");
+
+                }// End IF
+            
+            }// End Fast Recover
+
+        }// End Med Rocover
 
     }// End Slow
 
@@ -261,53 +297,3 @@ int main()
     fclose(outPtr_file_Ptr);
     return 0;
 }
-
-// /// \brief Print State to File
-// void printStateToFile(FILE* filePtr, char list[][LIST_ARRAY_STRING_LENGTH], int slow, int med, int fast) {
-    
-//     // Slow paced incrementing team name
-//     fprintf(filePtr, "%s", list[slow][LIST_ARRAY_STRING_LENGTH]);
-    
-//     // hyphen
-//     fprintf(filePtr, "- ");
-    
-//     // Med paced incrementing team name
-//     fprintf(filePtr, "%s", list[med][LIST_ARRAY_STRING_LENGTH]);
-    
-//     // hyphen
-//     fprintf(filePtr, "- ");
-    
-//     // fast paced incrementing team name
-//     fprintf(filePtr, "%s", list[fast][LIST_ARRAY_STRING_LENGTH]);
-    
-//     // New Line for next team group
-//     fprintf(filePtr, "\n");
-// };
-
-
-// ///////////////////////////////////
-// //  DEBUG
-// //////////////////////////////////
-// // \brief Print State to Terminal
-// void printStateToTerminal(char * list[][LIST_ARRAY_STRING_LENGTH], int slow, int med, int fast) {
-
-//     printf("Group %d \n \n", slow);
-              
-//     // Slow paced incrementing team name
-//     printf("%s", list[slow][LIST_ARRAY_STRING_LENGTH]);
-
-//     // hyphen
-//     printf("- ");
-
-//     // Med paced incrementing team name
-//     printf("%s", list[med][LIST_ARRAY_STRING_LENGTH]);
-
-//     // hyphen
-//     printf("- ");
-
-//     // fast paced incrementing team name
-//     printf("%s", list[fast][LIST_ARRAY_STRING_LENGTH]);
-
-//     // New Line for next team group
-//     printf("\n");
-// };
