@@ -194,19 +194,41 @@ int main()
             }
 
             // FAST: recover past index's
-            // for( fastIndex = 0 ; fastIndex < medIndex ; fastIndex++) {
+            for( fastIndex = 0 ; fastIndex < medIndex ; fastIndex++) {
 
-            //     // skip slowindex already printed
-            //     if(fastIndex != slowIndex) {
-     
-            //         // Print To File
-            //         //printStateToFile(outPtr_file_Ptr, listArr[slowIndex][LIST_ARRAY_STRING_LENGTH], slowIndex, medIndex, fastIndex);
+                // skip slowindex already printed
+                if(fastIndex != slowIndex) {
+    
+                                    // Slow paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[slowIndex]);
+                // hyphen
+                fprintf(outPtr_file_Ptr, "- ");
+                // Med paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[medIndex]);
+                // hyphen
+                fprintf(outPtr_file_Ptr, "- ");
+                // fast paced incrementing team name
+                fprintf(outPtr_file_Ptr, "%s", listArr[fastIndex]);
+                // New Line for next team group
+                fprintf(outPtr_file_Ptr, "\n");
 
-            //         // DEBUG: Print To Terminal
-            //         //printStateToTerminal(listArr, listArr[slowIndex][LIST_ARRAY_STRING_LENGTH], medIndex, fastIndex);
-            //     }// End IF
+
+
+                printf("%s", listArr[slowIndex]);
+                // hyphen
+                printf("- ");
+                // Med paced incrementing team name
+                printf("%s", listArr[medIndex]);
+                // hyphen
+                printf("- ");
+                // fast paced incrementing team name
+                printf("%s", listArr[fastIndex]);
+                // New Line for next team group
+                printf("\n");
+
+                }// End IF
             
-            // }// End Fast Index
+            }// End Fast Recover
 
         }// End Med Forward
 
